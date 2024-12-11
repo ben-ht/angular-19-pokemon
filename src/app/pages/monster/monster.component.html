@@ -1,0 +1,97 @@
+<div class="preview">
+    <app-playing-card [monster]="monster"></app-playing-card>
+</div>
+<div class="main-container">
+    <form [formGroup]="formGroup" (submit)="submit($event)">
+        <mat-form-field>
+            <mat-label for="name">Name</mat-label>
+            <input matInput type="text" id="name" name="name" formControlName="name">
+            @if (!isFieldValid("name")){
+                <mat-error>This field is required</mat-error>
+            }
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label for="image">Image</mat-label>
+            <input matInput type="text" id="image" name="image" formControlName="image">
+            @if (!isFieldValid("image")){
+                <mat-error>This field is required</mat-error>
+            }
+        </mat-form-field>
+
+        <div class="form-field">
+            <label for="type">Type</label>
+            <mat-select id="type" name="type" formControlName="type">
+                @for (type of monsterTypes; track type){
+                    <mat-option [value]="type">{{type}}</mat-option>
+                }
+            </mat-select>
+            @if (!isFieldValid("type")){
+                <div class="error">This field is not valid</div>
+            }
+        </div>
+
+        <mat-form-field>
+            <mat-label for="hp">HP</mat-label>
+            <input matInput type="hp" id="hp" name="hp" formControlName="hp">
+            @if (!isFieldValid("hp")){
+                @if (formGroup.get("hp")?.hasError("required")){
+                    <mat-error>This field is required</mat-error>
+                }
+                @if (formGroup.get("hp")?.hasError("min")){
+                    <mat-error>This field must be greater than 0</mat-error>
+                }
+                @if (formGroup.get("hp")?.hasError("max")){
+                    <mat-error>This field must be lower than 200</mat-error>
+                }
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label for="description">Description</mat-label>
+            <input matInput type="text" id="description" name="description" formControlName="description">
+            @if (!isFieldValid("description")){
+                <mat-error>This field is required</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <label for="attackName">Attack name</label>
+            <input matInput type="text" id="attackName" name="attackName" formControlName="attackName">
+            @if (!isFieldValid("attackName")){
+                <mat-error>This field is required</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label for="attackDamage">Attack damage</mat-label>
+            <input matInput type="text" id="attackDamage" name="attackDamage" formControlName="attackDamage">
+            @if (!isFieldValid("attackDamage")){
+                @if (formGroup.get("attackDamage")?.hasError("required")){
+                    <mat-error>This field is required</mat-error>
+                }
+                @if (formGroup.get("attackDamage")?.hasError("min")){
+                    <mat-error>This field must be greater than 0</mat-error>
+                }
+                @if (formGroup.get("attackDamage")?.hasError("max")){
+                    <mat-error class="error">This field must be lower than 200</mat-error>
+                }
+            }
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label for="attackDescription">Attack Description</mat-label>
+            <input matInput type="text" id="attackDescription" name="attackDescription" formControlName="attackDescription">
+            @if (!isFieldValid("attackDescription")){
+                <mat-error>This field is required</mat-error>
+            }
+        </mat-form-field>
+        <div class="button-container left">
+            <button mat-flat-button color="warn" type="button" (click)="deleteMonster()">Delete</button>
+        </div>
+        <div class="button-container right">
+            <button mat-button (click)="navigateBack()">Back</button>
+            <button mat-flat-button type="submit" [disabled]="formGroup.invalid">Save</button>
+        </div>
+    </form>
+</div>

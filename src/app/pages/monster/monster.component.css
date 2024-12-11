@@ -1,0 +1,59 @@
+form {
+    max-width: 500px;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+label {
+    font-size: small;
+}
+
+.ng-dirty.ng-invalid, .ng-touched.ng-invalid {
+    border-color: red;
+    border-width: 1px;
+}
+
+.error {
+    font-size: x-small;
+    color: red;
+}
+
+.preview {
+    width: 300px;
+    margin: 20px;
+}
+
+.preview, .main-container {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.main-container {
+    width: calc(100% - 340px);
+}
+
+.button-container{
+    display: flex;
+    gap: 10px;
+}
+
+.button-container.left, .button-container.right{
+    display: inline-block;
+    width: 50%;
+}
+
+.button-container.right{
+    text-align: right;
+}

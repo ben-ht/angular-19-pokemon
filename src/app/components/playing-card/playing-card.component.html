@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-content" [style.background-color]="backgroundColor()">
+        <div class="card-header">
+            <div class="card-title">
+                {{monster().name}}
+            </div>
+            <div class="card-right">
+                <div class="card-hp">{{monster().hp}} HP</div>
+                <div class="card-type">
+                    <img class="energy icon" [src]="monsterTypeIcon()" alt="electric">
+                </div>
+            </div>
+        </div>
+        <div class="card-image">
+            <img [src]="monster().image" alt="pikachu">
+            <span class="card-image-number">{{monster().description}}</span>
+        </div>
+        <div class="card-capacities">
+            <div class="card-capacity">
+                <div class="card-capacity-header">
+                    <div class="card-capacity-cost">
+                        <img class="energy icon" src="/img/electric.png" alt="electric">
+                        <img class="energy icon" src="/img/electric.png" alt="electric">
+                    </div>
+                    <div class="card-capacity-name">{{monster().attackName}}</div>
+                    <div class="card-capacity-damage">{{monster().attackDamage}}</div>
+                </div>
+                <div class="card-capacity-description">
+                    <p>{{monster().attackDescription}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

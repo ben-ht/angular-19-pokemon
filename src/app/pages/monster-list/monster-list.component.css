@@ -1,0 +1,16 @@
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+}
+
+.center {
+    margin-top: 40px;
+    text-align: center;
+}
+
+app-playing-card{
+    cursor: pointer;
+}
