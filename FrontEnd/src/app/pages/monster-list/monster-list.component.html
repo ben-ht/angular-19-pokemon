@@ -1,0 +1,16 @@
+<app-search-bar [(query)]="query" />
+<div class="card-list">
+  @for(monster of filteredMonsters(); track monster){
+    <app-playing-card [monster]="monster" (click)="openMonster(monster)" />
+  } @empty {
+    <div class="center">No monsters found !</div>
+  }
+</div>
+
+@if (filteredMonsters().length > 0){
+<div class="center">Found {{filteredMonsters().length}} monsters !</div>
+}
+
+<div class="center">
+  <button mat-flat-button (click)="addMonster()">Add monster</button>
+</div>
